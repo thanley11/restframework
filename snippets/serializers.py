@@ -1,3 +1,4 @@
+"""
 from rest_framework import serializers
 from snippets.models import Snippet
 from django.contrib.auth.models import User
@@ -36,13 +37,13 @@ class SnippetSerializer(serializers.Serializer):
     style = serializers.ChoiceField(choices=STYLE_CHOICES, default = 'friendly')
     
     def restore_object(self, attrs, instance=None):
-        
+        """
         Create or update a new snippet instance, given a dictionary
         of deserialized field values.
 
         Note that if we don't define this method, then deserializing
         data will simply return a dictionary of items.
-        
+        """
         if instance:
             # Update existing instance
             instance.title = attrs.get('title', instance.title)
@@ -57,5 +58,4 @@ class SnippetSerializer(serializers.Serializer):
         
     class Meta:
         model = Snippet
-        fields = ('id','title','code','linenos','language','style')
-        """
+        fields = ('pk','title','code','linenos','language','style')
