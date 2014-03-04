@@ -40,6 +40,9 @@ INSTALLED_APPS = (
     'snippets',
 )
 
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 10
+}
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
